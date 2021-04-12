@@ -1,4 +1,4 @@
-# nugu README
+# NuGu README
 
 This is the README for your extension "nugu". After writing up a brief description, we recommend including the following sections.
 
@@ -39,13 +39,6 @@ Users appreciate release notes as you update your extension.
 
 Initial release of ...
 
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
 
 -----------------------------------------------------------------------------------------------------------
 ## Following extension guidelines
@@ -68,3 +61,9 @@ Ensure that you've read through the extensions guidelines and follow the best pr
 * [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
 **Enjoy!**
+
+
+
+Pump the guid to the cursor possition
+option for quote (single/double)
+option for uppercase

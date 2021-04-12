@@ -1,27 +1,37 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import {v4 as uuidv4} from 'uuid';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+	
+	console.log('Extension "nugu" is now active!');
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "nugu" is now active!');
-
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('nugu.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello vs code');
+	let disposableNewGuid = vscode.commands.registerCommand('nugu.newStandardGuid', () => {
+		let newGuid = uuidv4();
+		outputText(newGuid);
 	});
 
-	context.subscriptions.push(disposable);
-}
+	let disposableNewQuotedGuid = vscode.commands.registerCommand('nugu.newStandardGuidDoubleQuotes', () => {
+		let newGuid = uuidv4();
+		outputText("\"" + newGuid + "\"");
+	});
 
-// this method is called when your extension is deactivated
-export function deactivate() {}
+	function outputText(value: string){
+
+		const activeTextEditor = vscode.window.activeTextEditor;
+		if (activeTextEditor) {
+			
+			const activeTextEditor = vscode.window.activeTextEditor;
+			if (activeTextEditor) {
+
+				let newGuid = uuidv4();
+				const selection = activeTextEditor.selection;
+
+				activeTextEditor.edit(editBuilder => {
+					editBuilder.replace(selection, value);
+				});
+			}
+		}
+	}
+	context.subscriptions.push(disposableNewGuid);
+	context.subscriptions.push(disposableNewQuotedGuid);
+}
