@@ -15,6 +15,11 @@ export function activate(context: vscode.ExtensionContext) {
 		outputText("\"" + newGuid + "\"");
 	});
 
+	let disposableNewSingleQuotedGuid = vscode.commands.registerCommand('nugu.newStandardGuidSingleQuotes', () => {
+		let newGuid = uuidv4();
+		outputText("\'" + newGuid + "\'");
+	});
+
 	function outputText(value: string){
 
 		const activeTextEditor = vscode.window.activeTextEditor;
@@ -23,7 +28,6 @@ export function activate(context: vscode.ExtensionContext) {
 			const activeTextEditor = vscode.window.activeTextEditor;
 			if (activeTextEditor) {
 
-				let newGuid = uuidv4();
 				const selection = activeTextEditor.selection;
 
 				activeTextEditor.edit(editBuilder => {
@@ -32,6 +36,8 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 		}
 	}
+
 	context.subscriptions.push(disposableNewGuid);
 	context.subscriptions.push(disposableNewQuotedGuid);
+	context.subscriptions.push(disposableNewSingleQuotedGuid);
 }

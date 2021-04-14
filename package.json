@@ -3,7 +3,8 @@
 	"displayName": "NuGu",
 	"description": "Guid generator",
 	"version": "0.0.1",
-	"publisher": "beakersoft",
+	"publisher": "Beakersoft",
+	"icon": "images/icon.png",
 	"repository": "https://github.com/beakersoft/nugu",
 	"engines": {
 		"vscode": "^1.55.0"
@@ -13,7 +14,8 @@
 	],
 	"activationEvents": [
 		"onCommand:nugu.newStandardGuid",
-		"onCommand:nugu.newStandardGuidDoubleQuotes"
+		"onCommand:nugu.newStandardGuidDoubleQuotes",
+		"onCommand:nugu.newStandardGuidSingleQuotes"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -25,8 +27,18 @@
 			{
 				"command": "nugu.newStandardGuidDoubleQuotes",
 				"title": "Nugu: Insert Standard GUID double quoted"
+			},
+			{
+				"command": "nugu.newStandardGuidSingleQuotes",
+				"title": "Nugu: Insert Standard GUID single quotes"
 			}
-		]
+		],
+		"keybindings": [{
+			"command": "nugu.newStandardGuid",
+			"key": "ctrl+shift+[",
+			"mac": "cmd+shift+[",
+			"when": "editorTextFocus"
+		  }]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
